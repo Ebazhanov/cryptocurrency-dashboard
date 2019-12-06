@@ -3002,6 +3002,11 @@ crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+cryptocompare@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/cryptocompare/-/cryptocompare-1.0.0.tgz#d93bafd037686ec13bbf3cf6b40187310f991a3d"
+  integrity sha512-Xk6+hJJ+XSlWsofIx2WHF2n410ADLkXMfCn/1aLTI4NlWLo2LPtQzw+j3aBEPQ+HVar1dO5HVLAJFBQqGyhdOQ==
+
 css-blank-pseudo@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/css-blank-pseudo/-/css-blank-pseudo-0.1.4.tgz#dfdefd3254bf8a82027993674ccf35483bfcb3c5"
