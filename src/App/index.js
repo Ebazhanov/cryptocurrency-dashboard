@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
+import WelcomeMessage from "./WelcomeMessage";
+import styled from 'styled-components';
 
-function Index() {
-  return (
-    <div>Hello world</div>
-  );
+const MyButton = styled.div`
+    color:green;
+`;
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <WelcomeMessage/>
+                <MyButton>Hello</MyButton>
+            </div>
+        );
+    }
 }
 
-export default Index;
+export default App;
