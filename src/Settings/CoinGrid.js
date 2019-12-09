@@ -18,7 +18,7 @@ export default function ({topSection}) {
     return <AppContext.Consumer>
         {({coinList}) => <CoinGridStyled>
             {getCoinsToDisplay(coinList, topSection).map(coinKey =>
-                <CoinTile coinKey={coinKey}/>)}
+                <CoinTile topSection={topSection} coinKey={coinKey}/>)}
         </CoinGridStyled>}
     </AppContext.Consumer>
 }
