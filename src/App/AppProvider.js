@@ -5,7 +5,7 @@ const cc = require('cryptocompare');
 
 export const AppContext = React.createContext();
 
-const MAX_FAVORITES = 30;
+const MAX_FAVORITES = 10;
 
 export class AppProvider extends React.Component {
     constructor(props) {
@@ -61,8 +61,9 @@ export class AppProvider extends React.Component {
         if (!cryptoDashData) {
             return {page: 'settings', firstVisit: true}
         }
-        let {favorites} = cryptoDashData;
-        return {favorites}
+/*        let {favorites} = cryptoDashData;
+        return {favorites};*/
+        return {}
     }
 
     setPage = page => this.setState({page});
