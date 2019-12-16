@@ -47,10 +47,33 @@ export class AppProvider extends React.Component {
 
     isInFavorites = key => _.includes(this.state.favorites, key);
 
+    fetchPrices = async () => {
+        if(this.state.firstVisit) return;
+        let prices = await this.prices();
+        // We must filter the empty price objects (not in the lecture)
+        prices = prices.filter(price => Object.keys(price).length);
+        this.setState({prices});
+    };
+
+    prices = async () => {
+        let returnData = [];
+        for(let i=0; i<this.state.favorites.length; i++){
+            try{
+                let priceDate = await cc.priceFull(this.state.favorites[i], 'USD');
+                returnData.push(priceDate);
+            } catch (e){
+                console.warn('Fetch price error: ', e);
+            }
+        }
+        return returnData;
+    };
+
     confirmFavorites = () => {
         this.setState({
             firstVisit: false,
             page: 'dashboard'
+        }, () => {
+            this.fetchPrices();
         });
         localStorage.setItem('cryptoDash', JSON.stringify({
             favorites: this.state.favorites
