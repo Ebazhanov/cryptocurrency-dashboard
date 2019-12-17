@@ -34,7 +34,7 @@ export class AppProvider extends React.Component {
 
     addCoin = key => {
         let favorites = [...this.state.favorites];
-        if(favorites.length < MAX_FAVORITES) {
+        if (!favorites.includes(key) && favorites.length < MAX_FAVORITES) {
             favorites.push(key);
             this.setState({favorites})
         }
@@ -81,13 +81,13 @@ export class AppProvider extends React.Component {
     };
 
     savedSettings() {
+        console.log(localStorage);
         let cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'));
         if (!cryptoDashData) {
             return {page: 'settings', firstVisit: true}
         }
-/*        let {favorites} = cryptoDashData;
-        return {favorites};*/
-        return {}
+        let {favorites} = cryptoDashData;
+        return favorites;
     }
 
     setPage = page => this.setState({page});
