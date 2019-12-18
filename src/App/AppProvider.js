@@ -81,7 +81,6 @@ export class AppProvider extends React.Component {
     };
 
     savedSettings() {
-        console.log(localStorage);
         let cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'));
         if (!cryptoDashData) {
             return {page: 'settings', firstVisit: true}
