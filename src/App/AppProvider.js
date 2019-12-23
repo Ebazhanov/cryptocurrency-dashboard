@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import _ from "lodash";
 import moment from "moment";
 
@@ -30,16 +30,15 @@ class AppProvider extends Component {
 
     addCoin = key => {
         let favorites = [...this.state.favorites];
-        // if (favorites.length < MAX_FAVORITES) {
         if (!favorites.includes(key) && favorites.length < MAX_FAVORITES) {
             favorites.push(key);
-            this.setState({ favorites });
+            this.setState({favorites});
         }
     };
 
     removeCoin = key => {
         let favorites = [...this.state.favorites];
-        this.setState({ favorites: _.pull(favorites, key) });
+        this.setState({favorites: _.pull(favorites, key)});
     };
 
     componentDidMount = () => {
@@ -50,13 +49,15 @@ class AppProvider extends Component {
 
     fetchCoins = async () => {
         let coinList = (await cc.coinList()).Data;
-        this.setState({ coinList });
+        this.setState({coinList});
     };
 
     fetchPrices = async () => {
         if (this.state.firstVisit) return;
         let prices = await this.prices();
-        this.setState({ prices });
+        // We must filter the empty price objects (not in the lecture)
+        prices = prices.filter(price => Object.keys(price).length);
+        this.setState({prices});
     };
 
     fetchHistorical = async () => {
@@ -67,13 +68,13 @@ class AppProvider extends Component {
                 name: this.state.currentFavorite,
                 data: result.map((ticker, index) => [
                     moment()
-                        .subtract({ [this.state.timeInterval]: TIME_UNITS - index })
+                        .subtract({[this.state.timeInterval]: TIME_UNITS - index})
                         .valueOf(),
                     ticker.USD
                 ])
             }
         ];
-        this.setState({ historical });
+        this.setState({historical});
     };
 
     historical = () => {
@@ -84,7 +85,7 @@ class AppProvider extends Component {
                     this.state.currentFavorite,
                     ["USD"],
                     moment()
-                        .subtract({ [this.state.timeInterval]: units })
+                        .subtract({[this.state.timeInterval]: units})
                         .toDate()
                 )
             );
@@ -153,22 +154,23 @@ class AppProvider extends Component {
     savedSettings = () => {
         let cryptoDashData = JSON.parse(localStorage.getItem("cryptoDash"));
         if (!cryptoDashData) {
-            return { page: "settings", firstVisit: true };
+            return {page: "settings", firstVisit: true};
         }
-        let { favorites, currentFavorite } = cryptoDashData;
-        return { favorites, currentFavorite };
+        let {favorites, currentFavorite} = cryptoDashData;
+        return {favorites, currentFavorite};
     };
 
-    setPage = page => this.setState({ page });
+    setPage = page => this.setState({page});
 
-    setFilteredCoins = filteredCoins => this.setState({ filteredCoins });
+    setFilteredCoins = filteredCoins => this.setState({filteredCoins});
 
     changeChartSelect = value => {
         this.setState(
-            { timeInterval: value, historical: null },
+            {timeInterval: value, historical: null},
             this.fetchHistorical
         );
     };
+
     render() {
         return (
             <AppContext.Provider value={this.state}>
