@@ -43,9 +43,7 @@ const PriceTileStyled = styled(SelectableTile)`
       justify-items: right;
     `}
 
-  ${props =>
-    props.currentFavorite &&
-    css`
+  ${props => props.currentFavorite && css`
       ${greenBoxShadow}
       pointer-events: none;
     `}

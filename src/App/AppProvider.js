@@ -142,9 +142,7 @@ class AppProvider extends Component {
             this.fetchHistorical
         );
 
-        localStorage.setItem(
-            "cryptoDash",
-            JSON.stringify({
+        localStorage.setItem("cryptoDash", JSON.stringify({
                 ...JSON.parse(localStorage.getItem("cryptoDash")),
                 currentFavorite: sym
             })
