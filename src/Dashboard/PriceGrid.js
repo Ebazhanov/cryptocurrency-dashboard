@@ -10,18 +10,16 @@ const PriceGridStyled = styled.div`
   margin-top: 40px;
 `;
 
-function PriceGrid() {
+export default function PriceGrid() {
     return (
         <AppContext.Consumer>
             {({ prices }) => (
                 <PriceGridStyled>
                     {prices.map((price, index) => (
-                        <PriceTile key={index} price={price} index={index} />
+                        <PriceTile key={`priceTile-${index}`} price={price} index={index} />
                     ))}
                 </PriceGridStyled>
             )}
         </AppContext.Consumer>
     );
 }
-
-export default PriceGrid;

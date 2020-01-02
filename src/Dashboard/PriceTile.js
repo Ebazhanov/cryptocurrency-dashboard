@@ -76,12 +76,14 @@ function PriceTileTag({sym, data, currentFavorite, setCurrentFavorite}) {
     );
 }
 
-function PriceTileCompactTag({
-                                 sym,
-                                 data,
-                                 currentFavorite,
-                                 setCurrentFavorite
-                             }) {
+function PriceTileCompactTag(
+    {
+        sym,
+        data,
+        currentFavorite,
+        setCurrentFavorite
+    }
+) {
     return (
         <PriceTileStyled
             onClick={setCurrentFavorite}
