@@ -24,7 +24,7 @@ export default function PriceChart() {
                     {historical ? (
                         <ReactHighCharts config={HighchartsConfig(historical)}/>
                     ) : (
-                        <div>Loading Historical Data ...</div>
+                        <div>> You are over your rate limit please upgrade your account!</div>
                     )}
                 </Tile>
             )}
