@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { backgroundColor2, fontSize2 } from "../Shared/Styles";
+import {backgroundColor2, fontSize2} from "../Shared/Styles";
 
-const ChartSelect = styled.select`
+export default styled.select`
   ${backgroundColor2}
   ${fontSize2}
   color: #1163c9;
@@ -9,5 +9,3 @@ const ChartSelect = styled.select`
   margin: 5px;
   float: right;
 `;
-
-export default ChartSelect;
